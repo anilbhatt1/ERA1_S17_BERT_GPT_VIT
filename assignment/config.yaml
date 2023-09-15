@@ -22,4 +22,7 @@ bert:
     drop_last: false 
     pin_memory: true 
     batch_size: 1024
+  train_iter: 2000
+  print_iter: 10
+  embed_save_limit: 3000
 
