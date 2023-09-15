@@ -26,3 +26,16 @@ bert:
   print_iter: 10
   embed_save_limit: 3000
 
+gpt:
+  batch_size: 32
+  block_size: 64
+  dropout: 0.2
+  lr: 0.0003
+  num_embed: 768
+  num_head: 6
+  num_layer: 6
+  max_iter: 1000
+  eval_inter: 200
+  data_path : '/content/ERA1_S17_BERT_GPT_VIT/course_docs/GPT/data/english.txt'
+  inference_tokens: 50
+

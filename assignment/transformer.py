@@ -10,7 +10,7 @@ import torch
 import math
 import re
 
-from gpt_utils import DEVICE
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 import torchvision
 from torchvision import transforms
