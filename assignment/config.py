@@ -3,5 +3,5 @@ import os
 
 def get_config():
     return {
-        "model" : "bert",
+        "model" : "resnet50",
     }
