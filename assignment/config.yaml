@@ -39,3 +39,18 @@ gpt:
   data_path : '/content/ERA1_S17_BERT_GPT_VIT/course_docs/GPT/data/english.txt'
   inference_tokens: 50
 
+vit:
+  image_path: "/content/pizza_steak_sushi"
+  batch_size: 32
+  img_size: 224
+  patch_size: 16
+  num_transformer_layers: 12
+  embedding_dim: 768
+  mlp_size: 3072
+  num_heads: 12
+  attn_dropout: 0
+  mlp_dropout: 0.1
+  embedding_dropout: 0.1
+  num_classes: 1000
+
+

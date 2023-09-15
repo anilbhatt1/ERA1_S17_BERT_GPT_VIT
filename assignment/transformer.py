@@ -335,20 +335,6 @@ class gpt_Transformer(nn.Module):
 # VIT Transformer
 # =============================================================================
 
-# Set the patch size
-patch_size=16
-
-# Create the Conv2d layer with hyperparameters from the ViT paper
-conv2d = nn.Conv2d(in_channels=3, # number of color channels
-                   out_channels=768, # from Table 1: Hidden size D, this is the embedding size
-                   kernel_size=patch_size, # could also use (patch_size, patch_size)
-                   stride=patch_size,
-                   padding=0)
-
-# Create flatten layer
-flatten = nn.Flatten(start_dim=2, # flatten feature_map_height (dimension 2)
-                     end_dim=3) # flatten feature_map_width (dimension 3)
-
 # 1. Create a class which subclasses nn.Module
 class vit_PatchEmbedding(nn.Module):
     """Turns a 2D input image into a 1D sequence learnable embedding vector.
@@ -375,12 +361,14 @@ class vit_PatchEmbedding(nn.Module):
         # 4. Create a layer to flatten the patch feature maps into a single dimension
         self.flatten = nn.Flatten(start_dim=2, # only flatten the feature map dimensions into a single vector
                                   end_dim=3)
+        
+        self.patch_size = patch_size
 
     # 5. Define the forward method
     def forward(self, x):
         # Create assertion to check that inputs are the correct shape
         image_resolution = x.shape[-1]
-        assert image_resolution % patch_size == 0, f"Input image size must be divisble by patch size, image shape: {image_resolution}, patch size: {patch_size}"
+        assert image_resolution % self.patch_size == 0, f"Input image size must be divisble by patch size, image shape: {image_resolution}, patch size: {patch_size}"
 
         # Perform the forward pass
         x_patched = self.patcher(x)
